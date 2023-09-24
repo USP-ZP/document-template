@@ -1,0 +1,61 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INFORMAÇÔES:
+%
+% O número do procedimento deve ter o seguinte formato ID.ANOvMAJOR.MINOR.PATCH
+%  - ID: número composto por 3 dígitos (ex: 001). O ID é incremental e faz reset em cada ano
+%  - ANO: Ano civil em que o procedimento foi criado pela primeira vez
+%  - MAJOR: Versão major do documento. Corresponde a uma grande revisão do documento.
+%           Geralmente implica nova revisão cientifica extensa
+%  - MINOR: Versão minor do documento. Corresponde a uma pequena revisão do documento, 
+%           com alterações "cirurgicas" da recomendação
+%  - PATCH: Versão patch do documento. Corresponde a pequenas alterações como correcção de 
+%           gralhas ou erros ortográficos
+%
+%  NOTA: Nem todos os tipos de documentos usam todos os tipos de metadados
+
+
+% escolher o tipo de documento apropriado, removendo o símbolo de comentário (%) do inicio da linha
+% e comentando as restantes
+\def\tipodocumento{documento}           % documento genérico
+%\def\tipodocumento{recomendacao}       % recomendação
+%\def\tipodocumento{procedimento}       % procdimento
+%\def\tipodocumento{instrucaotrabalho}  % instrução de trabalho
+
+
+% Variáveis do documento (alterar conforme necessário)
+\def\titulo{Template para documento da USP com um título que pode ser bastante longo}
+\def\id{001}
+\def\ano{2023}
+\def\major{1}
+\def\minor{0}
+\def\patch{0}
+
+% palavras chave
+\def\pchave{Rastreio, Enterobacterales produtores de carbapenemases, \emph{Staphylococcus aureus} resistente a 
+	meticilina, admissão hospitalar, internamento} 
+
+% destinatarios
+\def\destinatarios{Profissionais de Saúde do ACES Oeste Norte}
+
+\def\local{USP do ACES Oeste Norte}
+
+\def\dataElaboracao{2023-09-01}
+\def\dataRevisao{2023-12-31}
+\def\dataAprovacao{2023-12-31}
+
+\newcommand{\proposta}{
+O presente documento foi elaborado por proposta da conjunta da 
+Unidade de Saúde Pública do ACES Oeste Norte,
+o Centro Hospitalar do Oeste e do Departamento de Saúde Pública
+da Administração Regional de Saúde de Lisboa e Vale do Tejo.
+}
+
+\def\equipaRedatora{
+	João Silva, Maria Fernandes, Bruno Almeida, Ana Luísa Pereira
+}
+\def\equipaRevisora{
+	Tiago Carvalho, Sofia Martins, André Lopes Rocha
+}
+\def\equipaConsultora{
+	Rita Oliveira Santos e Pedro Gonçalves
+}

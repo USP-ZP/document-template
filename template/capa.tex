@@ -1,0 +1,64 @@
+\newgeometry{left=3cm}
+\begin{titlepage}
+	\pagestyle{plain} % Suppress headers and footers on this page
+	\pagecolor{gray1}\afterpage{\nopagecolor}
+	
+	\begin{tikzpicture}[remember picture,overlay] 
+		\node[rounded corners, fill=gray2, anchor=north, minimum width=\paperwidth-1.25cm, minimum height=1.25cm](firstrect) at (current page.north){};%
+	\end{tikzpicture}
+	
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[rounded corners, fill=gray2, anchor=north, minimum width=\paperwidth-2cm, 
+		minimum height={\paperheight-6cm}](secondrect) 
+		at ($(current page.north)-(0,6cm)$) {};
+	\end{tikzpicture}
+	
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[anchor=center, inner sep=0pt](logos) at ([yshift=-3.7cm]current page.north) 
+		{\includegraphics[width=1\textwidth]{template/logos.png}};
+	\end{tikzpicture}
+	\vfill
+	\vfill
+
+    \begin{flushleft}
+		\textcolor{colorschema}{\fontsize{60}{60}\selectfont++}
+	\end{flushleft}
+	
+	\begin{flushleft}
+		\fontsize{35}{50}\selectfont\textbf{\docname{} USP-ZP}\\%
+		\fontsize{20}{25}\selectfont\textbf{\hspace{1cm}\numero}
+	\end{flushleft}
+	\vfill
+	\vfill
+	\vfill
+	
+	\begin{flushright}
+		\textcolor{colorschema}{
+			\Huge{\textbf{\titulo}}\\
+			\Large{\textbf{Versão \versao}}\\
+		}
+	\end{flushright}
+	
+
+	\begin{flushleft}
+		\ifdefstring{\tipodocumento}{recomendacao}{
+			\input{template/recomendacao/subcapa.tex}
+		}{
+			\ifdefstring{\tipodocumento}{procedimento}{
+				\input{template/procedimento/subcapa.tex}
+			}{
+				\ifdefstring{\tipodocumento}{instrucaotrabalho}{
+					\input{template/instrucaotrabalho/subcapa.tex}
+				}{
+					\input{template/documento/subcapa.tex}
+				}
+			}
+		}
+	\end{flushleft}
+
+	
+
+	
+\end{titlepage}
+\thispagestyle{empty}
+\restoregeometry

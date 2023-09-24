@@ -1,0 +1,4 @@
+\newcommand{\checkdir}[1]{%
+	\immediate\write18{if exist "#1" (echo 1 > dircheck.tmp) else (echo 0 > dircheck.tmp)}%
+	\CatchFileDef{\dirresult}{dircheck.tmp}{}%
+}

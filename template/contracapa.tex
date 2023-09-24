@@ -1,0 +1,42 @@
+\newgeometry{left=3cm}
+\begin{titlepage}
+	\pagestyle{plain} % Suppress headers and footers on this page
+	\pagecolor{gray2}
+	
+	\cabecalho[\docname]{colorschema}
+	\vfill
+	
+	\ifdefstring{\tipodocumento}{recomendacao}{
+		\input{template/recomendacao/subcontracapa.tex}
+	}{
+		\ifdefstring{\tipodocumento}{procedimento}{
+			\input{template/procedimento/subcontracapa.tex}
+		}{
+			\ifdefstring{\tipodocumento}{instrucaotrabalho}{
+				\input{template/instrucaotrabalho/subcontracapa.tex}
+			}{
+				\input{template/documento/subcontracapa.tex}
+		}
+	}
+}
+	
+
+	
+	
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[anchor=south, yshift=1cm] at (current page.south) {
+			\begin{minipage}{\textwidth}
+				\centering
+				\small{
+					Unidade de Saúde Pública Zé Povinho \\
+					Rua Etelvino Santos, s/n.º;
+					2500-297 Caldas da Rainha\\
+					Telefone n.º 262 248 840\\
+					usp.oestenorte@arslvt.min-saude.pt
+				}
+			\end{minipage}
+		};
+	\end{tikzpicture}
+	\restoregeometry	
+\end{titlepage}
+\newpage

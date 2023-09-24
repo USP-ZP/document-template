@@ -1,0 +1,62 @@
+\tableofcontents
+\newpage
+
+
+\section{Enquadramento}
+\markdownInput{conteudo/procedimento/enquadramento.md}
+
+\section{Objetivo}
+\markdownInput{conteudo/procedimento/objetivo.md}
+
+\section{Âmbito}
+\markdownInput{conteudo/procedimento/ambito.md}
+
+\section{Destinatários}
+\markdownInput{conteudo/procedimento/destinatarios.md}
+
+\section{Definição}
+
+    \subsection{Definição Funcional}
+    \markdownInput{conteudo/procedimento/def-funcional.md}
+    
+    \subsection{Limites de Entrada no Processo}
+    \markdownInput{conteudo/procedimento/limites-entrada.md}
+
+    \subsection{Limites de Saída do Processo}
+    \markdownInput{conteudo/procedimento/limites-saidal.md}
+
+    \subsection{Limites Marginais}
+    \markdownInput{conteudo/procedimento/limites-marginais.md}
+
+\section{Responsabilidades}
+\markdownInput{conteudo/procedimento/responsabilidades.md}
+
+\section{Descrição do procedimento}
+\markdownInput{conteudo/procedimento/descricao.md}
+
+\section{Situações de Excepção}
+\markdownInput{conteudo/procedimento/excepcoes.md}
+
+\section{Monitorização e Avaliação}
+\markdownInput{conteudo/procedimento/monitorizacao.md}
+
+\printbibliography[title={Documentos de Referência}]
+
+\newpage
+
+% changelog
+\section{Registo de Alterações}
+\stoptocentries% Stop adding content to the ToC
+
+% Define section and subsection titles without numbering
+\titleformat{\section}[block]{\normalfont\Large\bfseries}{}{0em}{}
+\titleformat{\subsection}[block]{\normalfont\large\bfseries}{}{0em}{}
+
+\markdownInput{changelog.md}
+
+% Restore the original section and subsection titles
+\titleformat{\section}[block]{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}[block]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\starttocentries% Resume adding content to the ToC
+

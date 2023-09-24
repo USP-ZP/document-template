@@ -1,0 +1,10 @@
+\newcommand{\includeallfromdir}[1]{%
+	\immediate\write18{collecttexfiles.bat #1}%
+	\CatchFileDef{\filelist}{collectedanexos.tmp}{}
+	\expandafter\forcsvlist\expandafter\inputdetokenized\expandafter{\filelist}
+}
+
+\newcommand{\inputdetokenized}[1]{%
+	\input{\detokenize{#1}}
+	\newpage
+}

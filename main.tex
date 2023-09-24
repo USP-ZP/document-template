@@ -1,0 +1,230 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   LaTeX source code de documentos de recomendações
+%   Produzido para a USP Zé Povinho - ACES Oeste Norte
+%
+% 	Desenvolvido por: Estêvão Soares dos Santos
+%	Last updated: 16-09-2023
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% NOTA: Este ficheiro é o template e NÃO DEVE SER ALTERADO.
+% Para alterar o conteúdo, editar os ficheiros da pasta "conteudos"
+% AS informações acerca da recomendação estão no ficheiro "metadados.tex"
+
+\input{metadados.tex}
+
+
+\documentclass[12pt]{article}
+
+% Language setting
+\usepackage[portuguese]{babel}
+\usepackage{csquotes}
+
+% Load the titlesec package for formatting section and subsection titles
+\usepackage{titlesec}
+
+
+% Set page size and margins
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+
+% fonts
+\usepackage[T1]{fontenc}
+\usepackage{Oswald} %Oswald
+\usepackage{helvet} % Helvetica
+\renewcommand*\familydefault{\sfdefault} % Makes Helvetica the default sans-serif font
+
+% Bibliografia
+\usepackage[backend=biber]{biblatex}
+\addbibresource{conteudo/referencias.bib}
+
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage[table]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[export]{adjustbox}
+\usepackage{afterpage}
+\usepackage{changepage}
+\usepackage{lipsum}
+\usepackage[shiftHeadings=1, startNumber=false, pipeTables=true]{markdown}
+\usepackage{fancyhdr}
+%\usepackage{filecontents}
+\usepackage{catchfile}
+\usepackage{etoolbox}
+\usepackage{subfiles} % Best loaded last in the preamble
+
+%my packages
+\usepackage{template/cabecalho}
+
+%\usepackage{showframe}
+
+
+\def\numero{D\id.\ano}
+\def\versao{\major.\minor.\patch}
+
+%%% Utils
+\input{template/utils/checkdir.tex}
+\input{template/utils/includeallfromdir.tex}
+
+
+%Esquema de Cores
+\definecolor{gray1}{RGB}{240, 240, 240}
+\definecolor{gray2}{RGB}{245, 245, 245}
+\definecolor{red1}{RGB}{204, 0, 51} % recomendacao
+\definecolor{blue1}{RGB}{0,103,153} % procedimento
+\definecolor{blue2}{RGB}{0,145,145} % instrucao trabalho
+\definecolor{green1}{RGB}{0,150,97}
+\definecolor{orange1}{RGB}{224,73,0}
+
+
+\let\oldaddcontentsline\addcontentsline
+\newcommand{\stoptocentries}{\renewcommand{\addcontentsline}[3]{}}
+\newcommand{\starttocentries}{\let\addcontentsline\oldaddcontentsline}
+
+\newcommand{\nonumbersections}[1]{
+	% Remove numbers from sections and subsections
+	% format sections and subsections titles to be red
+	\titleformat{\section}
+	{\normalfont\sffamily\Large\bfseries\color{#1}}
+	{}{0em}{}
+	
+	\titleformat{\subsection}
+	{\normalfont\sffamily\normalsize\bfseries\color{#1}}
+	{}{0em}{}
+	
+	\titleformat{\subsubsection}
+	{\normalfont\sffamily\normalsize\bfseries\color{#1}}
+	{}{0em}{}
+}
+
+\newcommand{\numberedsections}[1]{
+	% Remove numbers from sections and subsections
+	% format sections and subsections titles to be red
+	\titleformat{\section}
+	{\normalfont\sffamily\Large\bfseries\color{#1}}
+	{\thesection.}{1em}{}
+	
+	\titleformat{\subsection}
+	{\normalfont\sffamily\normalsize\bfseries\color{#1}}
+	{\thesubsection.}{1em}{}
+	
+	\titleformat{\subsubsection}
+	{\normalfont\sffamily\normalsize\bfseries\color{#1}}
+	{\thesubsubsection.}{1em}{}
+}
+
+
+% definition to store the type of document
+\def\docname{Documento}
+
+\ifdefstring{\tipodocumento}{recomendacao}{
+	\colorlet{colorschema}{red1}
+	\def\docname{Recomendação}
+	\def\numero{R\id.\ano}
+	\nonumbersections{colorschema}
+}{
+	\ifdefstring{\tipodocumento}{procedimento}{
+		\colorlet{colorschema}{blue1}
+		\def\docname{Procedimento}
+		\def\numero{P\id.\ano}
+		\numberedsections{colorschema}
+	}{
+		\ifdefstring{\tipodocumento}{instrucaotrabalho}{
+			\colorlet{colorschema}{blue2}
+			\def\docname{Instrução de Trabalho}
+			\def\numero{T\id.\ano}
+			\numberedsections{colorschema}
+		}{
+			\colorlet{colorschema}{green1}
+			\def\docname{Documento}
+			\def\numero{D\id.\ano}
+			\numberedsections{colorschema}
+		}
+	}
+}
+
+
+% Change the font of the bibliography
+\renewcommand*{\bibfont}{\sffamily\scriptsize}
+
+
+% Define the header and footer styles for the entire document
+\pagestyle{fancy}
+\fancyhf{} % Clear existing header and footer
+\renewcommand{\headrulewidth}{0pt} % No line in header area
+\fancyhead[L]{{
+		\fontfamily{phv}
+		\selectfont
+		{\cabecalho[\docname]{colorschema}}
+}} % Use \cabecalho in the left header % Use \cabecalho in the left header
+\fancyfoot[C]{\thepage} % center-align the page number in the footer
+\setlength{\headheight}{35pt}
+
+
+%% METADATA ON PDFs
+\hypersetup{pdfinfo={
+	Title={\titulo},
+	Author={\equipaRedatora, \equipaRevisora, \equipaConsultora},
+	Subject={\tipodocumento},
+	Keywords={\pchave}
+}}
+
+\begin{document}
+	
+	\input{template/capa.tex}
+
+	% Turn off PDF bookmarking, reset page counter
+	\hypersetup{pageanchor=false}
+	\setcounter{page}{1}
+	
+	\input{template/contracapa.tex}
+	
+	
+	% Turn PDF bookmarking back on and continue with your document
+	\hypersetup{pageanchor=true}
+	\setcounter{page}{3}
+	
+	%reset geometry
+	\newgeometry{top=4cm, bottom=2cm, left=2cm, right=2cm}
+	
+	%% LOAD BIBLIOGRAPHY EVEN IF THERE's NO CITATIONS
+	\nocite{*}
+
+	
+	%% CONDITIONAL LOADING OF TYPES OF DOCS
+	
+	\ifdefstring{\tipodocumento}{recomendacao}{
+		% recomendação
+		\input{template/recomendacao/base.tex}
+		
+	}{
+		\ifdefstring{\tipodocumento}{procedimento}{
+			% procedimento
+			\input{template/procedimento/base.tex}
+
+		}{
+			\ifdefstring{\tipodocumento}{instrucaotrabalho}{
+				% instrução de trabalho
+				\input{template/instrucaotrabalho/base.tex}
+
+			}{
+				% default (Documento)
+				\input{template/documento/base.tex}
+			}
+		}
+	}
+	
+	\pagebreak
+	
+	\checkdir{conteudo/anexos}
+	\ifnum\dirresult=1
+	\section{Anexos}
+	\includeallfromdir{conteudo/anexos}
+	\fi
+	
+	
+\end{document}

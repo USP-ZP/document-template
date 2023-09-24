@@ -1,0 +1,37 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"file_include_patterns": ["main.tex", "metadados.tex", "changelog.md", "main.pdf", "*.sublime-project", "conteudo/*", "template/*"],
+			"folder_include_patterns": ["conteudo/", "template/"]
+		}
+	],
+    "settings":
+    {
+        "tab_size": 4
+    },
+    "build_systems":
+    [
+    	{
+    		"name": "pdflatex",
+            "shell_cmd": "pdflatex.exe -synctex=1 -interaction=batchmode --shell-escape main.tex"
+    	},
+        {
+            "name": "pdflatex-bieber",
+            "shell_cmd": "pdflatex.exe -synctex=1 -interaction=batchmode --shell-escape main.tex && pdflatex.exe -synctex=1 -interaction=batchmode --shell-escape main.tex && biber.exe main && pdflatex.exe -synctex=1 -interaction=batchmode --shell-escape main.tex"
+        },
+        {
+        	"name": "bieber",
+        	"shell_cmd": "biber.exe main"
+        },
+        {
+        	"name": "clean",
+        	"shell_cmd": ""
+        }
+    ],
+	"open_externally_patterns": [
+		"*.zip",
+		"*.pdf"
+	]
+}

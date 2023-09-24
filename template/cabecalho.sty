@@ -1,0 +1,44 @@
+\ProvidesPackage{template/cabecalho}
+
+\RequirePackage{tikz}
+\usetikzlibrary{calc}
+\RequirePackage{xcolor}
+%\RequirePackage{xargs}
+
+
+\newcommand*{\cabecalho}[2][Documento] {
+	\begin{tikzpicture}[overlay, remember picture]
+		\node[
+			anchor=north,
+			minimum height=2cm,
+			fill=#2,
+			rectangle,
+			text width=5cm,
+			inner sep=0pt,
+			label={[text=white,anchor=south,inner sep=8pt]south:\textbf{#1}},
+			path picture={ % Clipping the content inside the node
+				\clip ([xshift=0cm,yshift=0cm]path picture bounding box.south west)
+				rectangle ([xshift=5cm,yshift=-2cm]path picture bounding box.north east);
+			}
+		](header-quadrado) at ([xshift=3.5cm]current page.north west) {};
+	\end{tikzpicture}
+	
+	\begin{tikzpicture}[overlay, remember picture]
+		% Your text node right below the header-quadrado rectangle
+		\node[
+		anchor=north west,  % Anchoring at the top left
+		inner sep=0pt
+		] (below-text) at (header-quadrado.south west) {
+			\begin{tabular}{@{}l@{}}
+				\scriptsize{\numero\hspace{5pt}versão: \versao} \\
+				\scriptsize{\textbf{\titulo}}
+			\end{tabular}
+		};
+	\end{tikzpicture}
+	
+	
+	\begin{tikzpicture}[overlay, remember picture]
+		\node[anchor=north east, inner sep=0pt](header-logos) at ([xshift=-1cm,yshift=-0.5cm]current page.north east) 
+		{\includegraphics[width=0.5\textwidth]{template/logos.png}};
+	\end{tikzpicture}
+}
