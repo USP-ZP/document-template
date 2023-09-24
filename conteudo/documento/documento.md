@@ -15,7 +15,7 @@ Este já é outro parágrafo de texto.
 
 Pode criar cabeçalhos usando o símbolo `#`. O número de `#` determina o nível do cabeçalho.
 
-
+```
 # Cabeçalho 1
 
 ## Cabeçalho 2
@@ -27,7 +27,7 @@ Pode criar cabeçalhos usando o símbolo `#`. O número de `#` determina o níve
 ##### Cabeçalho 5
 
 ###### Cabeçalho 6
-
+```
 
 ## Ênfase
 
