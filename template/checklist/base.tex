@@ -1,0 +1,17 @@
+\tableofcontents
+\newpage
+
+\section{Lista de Verificação}\label{sec:lista-de-verificacao}
+\begin{small}
+\begin{luacode}
+dofile("template/checklist/processlist.lua")
+process_checklist("template/checklist/test.src")
+\end{luacode}
+\end{small}
+\newpage
+
+\section{Guião da Lista de Verificação}\label{sec:guiao-da-lista-de-verificacao}
+\markdownInput[startNumber=true]{conteudo/checklist/guiao.md}
+\newpage
+
+\printbibliography[title={Referências}]

@@ -1,0 +1,19 @@
+\section{This is a section title}
+\begin{tabularx}{\textwidth}{|c|X|c|c|c|m{2.5cm}|}
+\hline
+nº & Item & Sim & Não & N/A & Notas \\
+\hline
+3 & Third checklist item, that has a very long text and it's actually multiline. The line starts with an indentation for readability &  &  &  & \\
+4 & Fourth item is also long and has 1. inside to test &  &  &  & \\
+5 & Should ignore blank lines &  &  &  & \\
+\end{tabularx}
+\end{flushleft}
+\section{Another subtitle}
+\begin{tabularx}{\textwidth}{|c|X|c|c|c|m{2.5cm}|}
+\hline
+nº & Item & Sim & Não & N/A & Notas \\
+\hline
+6 & some more items &  &  &  & \\
+7 & In a new table &  &  &  & \\
+\end{tabularx}
+\end{flushleft}

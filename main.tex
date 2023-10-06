@@ -1,3 +1,4 @@
+%! suppress = MultipleIncludes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   LaTeX source code de documentos de recomendações
 %   Produzido para a USP Zé Povinho - ACES Oeste Norte
@@ -11,35 +12,23 @@
 % Para alterar o conteúdo, editar os ficheiros da pasta "conteudos"
 % AS informações acerca da recomendação estão no ficheiro "metadados.tex"
 
-\input{metadados.tex}
+\input{metadados}
 
 
 \documentclass[12pt]{article}
 
-% Language setting
-\usepackage[portuguese]{babel}
+\usepackage{luacode}
+\usepackage{tabularx}
+\usepackage[portuguese]{babel} % Language setting
 \usepackage{csquotes}
-
-% Load the titlesec package for formatting section and subsection titles
-\usepackage{titlesec}
-
-
-% Set page size and margins
-\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
-
-
-% fonts
-\usepackage[T1]{fontenc}
-\usepackage{Oswald} %Oswald
+\usepackage{titlesec} % Load the titlesec package for formatting section and subsection titles
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry} % Set page size and margins
+\usepackage[T1]{fontenc} % fonts
+\usepackage{Oswald} % Oswald
 \usepackage{helvet} % Helvetica
 \renewcommand*\familydefault{\sfdefault} % Makes Helvetica the default sans-serif font
-
-% Bibliografia
-\usepackage[backend=biber]{biblatex}
+\usepackage[backend=biber]{biblatex} % Bibliografia
 \addbibresource{conteudo/referencias.bib}
-
-
-% Useful packages
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
@@ -52,14 +41,12 @@
 \usepackage{lipsum}
 \usepackage[shiftHeadings=1, startNumber=false, pipeTables=true, fencedCode]{markdown}
 \usepackage{fancyhdr}
-%\usepackage{filecontents}
 \usepackage{catchfile}
 \usepackage{etoolbox}
 \usepackage{subfiles} % Best loaded last in the preamble
 
-%my packages
+% my packages
 \usepackage{template/cabecalho}
-
 %\usepackage{showframe}
 
 
@@ -67,8 +54,8 @@
 \def\versao{\major.\minor.\patch}
 
 %%% Utils
-\input{template/utils/checkdir.tex}
-\input{template/utils/includeallfromdir.tex}
+\input{template/utils/checkdir}
+\input{template/utils/includeallfromdir}
 
 
 %Esquema de Cores
@@ -139,10 +126,17 @@
 			\def\numero{T\id.\ano}
 			\numberedsections{colorschema}
 		}{
-			\colorlet{colorschema}{green1}
-			\def\docname{Documento}
-			\def\numero{D\id.\ano}
-			\numberedsections{colorschema}
+			\ifdefstring{\tipodocumento}{checklist}{
+				\colorlet{colorschema}{orange1}
+				\def\docname{Lista de Verificação}
+				\def\numero{T\id.\ano}
+				\numberedsections{colorschema}
+			}{
+				\colorlet{colorschema}{green1}
+				\def\docname{Documento}
+				\def\numero{D\id.\ano}
+				\numberedsections{colorschema}
+			}
 		}
 	}
 }
@@ -175,13 +169,13 @@
 
 \begin{document}
 	
-	\input{template/capa.tex}
+	\input{template/capa}
 
 	% Turn off PDF bookmarking, reset page counter
 	\hypersetup{pageanchor=false}
 	\setcounter{page}{1}
 	
-	\input{template/contracapa.tex}
+	\input{template/contracapa}
 	
 	
 	% Turn PDF bookmarking back on and continue with your document
@@ -200,20 +194,22 @@
 	\ifdefstring{\tipodocumento}{recomendacao}{
 		% recomendação
 		\input{template/recomendacao/base.tex}
-		
 	}{
 		\ifdefstring{\tipodocumento}{procedimento}{
 			% procedimento
 			\input{template/procedimento/base.tex}
-
 		}{
 			\ifdefstring{\tipodocumento}{instrucaotrabalho}{
 				% instrução de trabalho
 				\input{template/instrucaotrabalho/base.tex}
-
 			}{
-				% default (Documento)
-				\input{template/documento/base.tex}
+				\ifdefstring{\tipodocumento}{checklist}{
+					% instrução de trabalho
+					\input{template/checklist/base.tex}
+				}{
+					% default (Documento)
+					\input{template/documento/base.tex}
+				}
 			}
 		}
 	}

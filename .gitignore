@@ -2,6 +2,7 @@ _markdown_main/
 .build/
 .tmp/
 build/
+.idea/
 *.aux
 *.bbl
 *.blg

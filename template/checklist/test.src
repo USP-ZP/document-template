@@ -1,0 +1,15 @@
+# This is a section title
+
+1. First Item
+2. Second checklist item with
+3. Third checklist item, that has a very long text and
+     it's actually multiline. The line starts with an indentation for readability
+
+4. Fourth item
+is also long and has 1. inside to test
+
+5. Should ignore blank lines
+
+# Another subtitle
+9. some more items
+10. In a new table
