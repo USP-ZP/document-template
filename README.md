@@ -1,7 +1,7 @@
 # USP-DOC: Template para documentos técnicos das USP
 
-Modelos em LaTeX para documentos produzidos pela Unidade de Saúde Pública Zé-Povinho.
-SUporta estes tipos de documentos:
+Modelos em LaTeX para documentos produzidos pela Unidade de Saúde Pública Zé-Povinho (ou para outras unidades).
+Suporta estes tipos de documentos:
 
  - Documentos genéricos (facilmente modificáveis)
  - Recomendações
