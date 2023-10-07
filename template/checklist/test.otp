@@ -1,19 +1,33 @@
-\section{This is a section title}
-\begin{tabularx}{\textwidth}{|c|X|c|c|c|m{2.5cm}|}
+\subsection{This is a section title}
+\subsubsection{One subtitle}
+\begin{flushleft}
+\rowcolors{2}{gray!25}{white}
+\begin{tabularx}{\textwidth}{|c|X|c|c|c|}
 \hline
-nº & Item & Sim & Não & N/A & Notas \\
+  & \textbf{Item} & \textbf{S} & \textbf{N} & \textbf{N/A} \\
 \hline
-3 & Third checklist item, that has a very long text and it's actually multiline. The line starts with an indentation for readability &  &  &  & \\
-4 & Fourth item is also long and has 1. inside to test &  &  &  & \\
-5 & Should ignore blank lines &  &  &  & \\
+1 & First Item &  &  & \\
+\hline
+2 & Second checklist item with &  &  & \\
+\hline
+3 & Third checklist item, that has a very long text and it's actually multiline. The line starts with an indentation for readability &  &  & \\
+\hline
+4 & Fourth item is also long and has 1. inside to test &  &  & \\
+\hline
+5 & Should ignore blank lines &  &  & \\
+\hline
 \end{tabularx}
 \end{flushleft}
-\section{Another subtitle}
-\begin{tabularx}{\textwidth}{|c|X|c|c|c|m{2.5cm}|}
+\subsection{Another subtitle}
+\begin{flushleft}
+\rowcolors{2}{gray!25}{white}
+\begin{tabularx}{\textwidth}{|c|X|c|c|c|}
 \hline
-nº & Item & Sim & Não & N/A & Notas \\
+  & \textbf{Item} & \textbf{S} & \textbf{N} & \textbf{N/A} \\
 \hline
-6 & some more items &  &  &  & \\
-7 & In a new table &  &  &  & \\
+6 & some more items &  &  & \\
+\hline
+7 & In a new table &  &  & \\
+\hline
 \end{tabularx}
 \end{flushleft}

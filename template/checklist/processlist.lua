@@ -30,8 +30,12 @@ local function process_checklist_create_output_table(file_name)
 
         -- if the char is # and a table is NOT open, then it's a section
         if (first_char == '#') then
+            -- count # at the start, for section level
+            local chars_at_start = string.match(line, '^[#]+')
+            local level = chars_at_start:len()
+
             -- remove the #
-            line = string.gsub(line, '^# *', '')
+            line = string.gsub(line, '^[#]+ *', '')
 
             if (table_is_open == true) then
                 -- A table was opened, so we need to close it
@@ -40,7 +44,7 @@ local function process_checklist_create_output_table(file_name)
             end
 
             -- print a section
-            local foo = {tipo="section", text=line}
+            local foo = {tipo="section", level=level, text=line}
             table.insert(otp, foo)
 
 	        -- we turn inside_section = true
@@ -88,21 +92,26 @@ local function process_checklist_create_output_table(file_name)
     return otp
 end
 
-local function process_checklist_make_section(text)
-    tex.print('\\subsection{' .. text .. '}')
+local function process_checklist_make_section(text, level)
+    if (level == 1) then
+        tex.print('\\subsection{' .. text .. '}')
+	else
+	    tex.print('\\subsubsection{' .. text .. '}')
+    end
+
 end
 
 local function process_checklist_make_table_header()
     tex.print("\\begin{flushleft}")
-    tex.print{"\\rowcolors{2}{gray!25}{white}"}
+    tex.print("\\rowcolors{2}{gray!25}{white}")
     tex.print("\\begin{tabularx}{\\textwidth}{|c|X|c|c|c|}")
     tex.print("\\hline")
-    tex.print("  & \\textbf{Item} & \\textbf{Sim} & \\textbf{Não} & \\textbf{N/A} \\\\")
+    tex.print("  & \\textbf{Item} & \\textbf{S} & \\textbf{N} & \\textbf{N/A} \\\\")
     tex.print("\\hline")
 end
 
 local function process_checklist_make_checklist_item(num, text)
-    tex.print(num .. " & " .. text .. "&  &  & \\\\")
+    tex.print(num .. " & " .. text .. " &  &  & \\\\")
     tex.print("\\hline")
 end
 
@@ -113,7 +122,7 @@ end
 local function process_checklist_print_stuff(tab)
     for i,line in ipairs(tab) do
         if (line.tipo == 'section') then
-    	    process_checklist_make_section(line.text)
+    	    process_checklist_make_section(line.text, line.level)
     	elseif (line.tipo == 'table_header') then
     	    process_checklist_make_table_header()
     	elseif (line.tipo == 'checklist_item') then
