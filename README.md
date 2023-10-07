@@ -96,11 +96,13 @@ Cada uma das subpastas terá os ficheiros apropriados para cada tipo de document
    criar uma bibliografia, consulte a secção deste guia intitulada ["conteudo/referencias.bib"](#conteudoreferenciasbib)
 
 5. A pasta `conteudo/anexos` funciona de maneira especial. Todos os ficheiros dentro desta serão incluidos na secção 
-   "Anexos" do documento final. Se a pasta estiver vazia, a secção Anexos desaparece do documento final.
+   "Anexos" do documento final. Se a pasta **for apgada**, a secção Anexos desaparece do documento final.
    Note que:
     - Cada anexo deve ser um ficheiro `.tex`. 
     - Os anexos são incluidos por ordem alfabética do nome ficheiro (e não do título do anexo). Ou seja, o ficheiro
       `aaa.tex` aparecerá sempre primeiro que o ficheiro `zzz.tex`, independentemente do título dado ao anexo.
+    - **NÂO DEIXE A PASTA ANEXOS VAZIA, OU VAI DAR ERRO!** Se não quiser anexos no documento, então deverá
+      **apagar a pasta**.
     - Para mais informações consulte a secção deste guia intitulada ["conteudo/anexos"](#conteudoanexos)
 
 ---
