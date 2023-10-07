@@ -1,30 +1,36 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% INFORMAÇÔES:
+%  USP-DOC
+%  Template para documentos técnicos das USP
 %
-% O número do procedimento deve ter o seguinte formato ID.ANOvMAJOR.MINOR.PATCH
-%  - ID: número composto por 3 dígitos (ex: 001). O ID é incremental e faz reset em cada ano
-%  - ANO: Ano civil em que o procedimento foi criado pela primeira vez
-%  - MAJOR: Versão major do documento. Corresponde a uma grande revisão do documento.
-%           Geralmente implica nova revisão cientifica extensa
-%  - MINOR: Versão minor do documento. Corresponde a uma pequena revisão do documento, 
-%           com alterações "cirurgicas" da recomendação
-%  - PATCH: Versão patch do documento. Corresponde a pequenas alterações como correcção de 
-%           gralhas ou erros ortográficos
-%
-%  NOTA: Nem todos os tipos de documentos usam todos os tipos de metadados
+%  Copyright (c) 2023 Estevão Soares dos Santos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%  NOTA: Nem todos os tipos de documentos usam todos os tipos de metadados
 
 % escolher o tipo de documento apropriado, removendo o símbolo de comentário (%) do inicio da linha
 % e comentando as restantes
-\def\tipodocumento{documento}           % documento genérico
-%\def\tipodocumento{recomendacao}       % recomendação
-%\def\tipodocumento{procedimento}       % procdimento
-%\def\tipodocumento{instrucaotrabalho}  % instrução de trabalho
-%\def\tipodocumento{checklist}  % instrução de trabalho
+%\newcommand{\tipodocumento}{documento}          % documento genérico
+%\newcommand{\tipodocumento}{recomendacao}       % recomendação
+%\newcommand{\tipodocumento}{procedimento}       % procdimento
+%\newcommand{\tipodocumento}{instrucaotrabalho}  % instrução de trabalho
+\newcommand{\tipodocumento}{checklist}           % lista de verificação
 
 
 % Variáveis do documento (alterar conforme necessário)
 \def\titulo{Template para documento da USP com um título que pode ser bastante longo}
+
+% O número do procedimento deve ter o seguinte formato <letra>ID.ANOvMAJOR.MINOR.PATCH
+%  - letra: Letra correspondente ao tipo de documento.
+%           (D: documentos; R: recomendação; P: procedimento; I: Instrução de trabalho; C: Lista de verificação)
+%  - ID:    Número composto por 3 dígitos (ex: 001). O ID é incremental e faz reset em cada ano
+%  - ANO:   Ano civil em que o procedimento foi criado pela primeira vez
+%  - MAJOR: Versão major do documento. Corresponde a uma grande revisão do documento.
+%           Geralmente implica nova revisão cientifica extensa
+%  - MINOR: Versão minor do documento. Corresponde a uma pequena revisão do documento,
+%           com alterações "cirurgicas" da recomendação
+%  - PATCH: Versão patch do documento. Corresponde a pequenas alterações como correcção de
+%           gralhas ou erros ortográficos
 \def\id{001}
 \def\ano{2023}
 \def\major{1}
@@ -59,4 +65,12 @@ da Administração Regional de Saúde de Lisboa e Vale do Tejo.
 }
 \def\equipaConsultora{
 	Rita Oliveira Santos e Pedro Gonçalves
+}
+
+\def\contacto{
+	Unidade de Saúde Pública Zé-Povinho \\
+	Rua Etelvino Santos, s/n.º;
+	2500-297 Caldas da Rainha\\
+	Telefone n.º 262 248 840\\
+	usp.oestenorte@arslvt.min-saude.pt\\
 }

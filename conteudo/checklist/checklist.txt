@@ -1,14 +1,14 @@
-# This is a section title
+# Um subtitulo
 
-1. First Item
-2. Second checklist item
-3. Third checklist item, that has a very long text and
-     it's actually multiline. The line starts with an indentation for readability
+1. Primeiro item
+2. Segundo item
+3. Terceiro item, com um texto bem longo. Pode-se dar enter
+     que este bocado de texto ainda pertence ao item anterior
+4. Quarto item
 
-4. Fourth item
+5. As linhas em branco são ignoradas
 
-5. Should ignore blank lines
+# Segundo subtítulo
 
-# Another subtitle
-9. some more items
-10. In a new table
+9. Mais items. O número inicial não interessa. Neste caso vai aparecer 6
+10. Estes items pertencem a uma nova tabela

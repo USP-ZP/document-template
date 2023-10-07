@@ -1,21 +1,29 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  USP-DOC
+%  Template para documentos técnicos das USP
+%
+%  Copyright (c) 2023 Estevão Soares dos Santos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \newgeometry{left=3cm}
+
 \begin{titlepage}
 	\pagestyle{plain} % Suppress headers and footers on this page
 	\pagecolor{gray2}
 	
 	\cabecalho[\docname]{colorschema}
 	\vfill
-	
+	%! suppress = NonMatchingIf
 	\ifdefstring{\tipodocumento}{recomendacao}{
-		\input{template/recomendacao/subcontracapa.tex}
+		\input{template/recomendacao/subcontracapa}
 	}{
 		\ifdefstring{\tipodocumento}{procedimento}{
-			\input{template/procedimento/subcontracapa.tex}
+			\input{template/procedimento/subcontracapa}
 		}{
 			\ifdefstring{\tipodocumento}{instrucaotrabalho}{
-				\input{template/instrucaotrabalho/subcontracapa.tex}
+				\input{template/instrucaotrabalho/subcontracapa}
 			}{
-				\input{template/documento/subcontracapa.tex}
+				\input{template/documento/subcontracapa}
 		}
 	}
 }
@@ -27,13 +35,11 @@
 		\node[anchor=south, yshift=1cm] at (current page.south) {
 			\begin{minipage}{\textwidth}
 				\centering
-				\small{
-					Unidade de Saúde Pública Zé Povinho \\
-					Rua Etelvino Santos, s/n.º;
-					2500-297 Caldas da Rainha\\
-					Telefone n.º 262 248 840\\
-					usp.oestenorte@arslvt.min-saude.pt
-				}
+				\small{\contacto}
+				\bigskip
+				% NÂO REMOVER ESTA COPYRIGHT NOTICE
+				\footnotesize{Este documento foi gerado pelo sistema USP-DOC\\ USP-DOC Copyright (c) 2023, Estêvão Soares dos Santos }
+				% NÂO REMOVER ESTA COPYRIGHT NOTICE
 			\end{minipage}
 		};
 	\end{tikzpicture}

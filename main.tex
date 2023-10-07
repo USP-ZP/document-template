@@ -1,22 +1,22 @@
-%! suppress = MultipleIncludes
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   LaTeX source code de documentos de recomendações
-%   Produzido para a USP Zé Povinho - ACES Oeste Norte
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  USP-DOC
+%  Template para documentos técnicos das USP
 %
-% 	Desenvolvido por: Estêvão Soares dos Santos
-%	Last updated: 16-09-2023
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%  Copyright (c) 2023 Estevão Soares dos Santos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % NOTA: Este ficheiro é o template e NÃO DEVE SER ALTERADO.
 % Para alterar o conteúdo, editar os ficheiros da pasta "conteudos"
 % AS informações acerca da recomendação estão no ficheiro "metadados.tex"
 
-\input{metadados}
 
+
+
+\input{metadados}
 
 \documentclass[12pt]{article}
 
+%! suppress = MultipleIncludes
 \usepackage{luacode}
 \usepackage{tabularx}
 \usepackage[portuguese]{babel} % Language setting
@@ -50,8 +50,8 @@
 %\usepackage{showframe}
 
 
-\def\numero{D\id.\ano}
-\def\versao{\major.\minor.\patch}
+\newcommand{\numero}{D\id.\ano}
+\newcommand{\versao}{\major.\minor.\patch}
 
 %%% Utils
 \input{template/utils/checkdir}
@@ -106,35 +106,36 @@
 
 
 % definition to store the type of document
-\def\docname{Documento}
+\newcommand{\docname}{Documento}
 
+%! suppress = NonMatchingIf
 \ifdefstring{\tipodocumento}{recomendacao}{
 	\colorlet{colorschema}{red1}
-	\def\docname{Recomendação}
-	\def\numero{R\id.\ano}
+	\renewcommand{\docname}{Recomendação}
+	\renewcommand{\numero}{R\id.\ano}
 	\nonumbersections{colorschema}
 }{
 	\ifdefstring{\tipodocumento}{procedimento}{
 		\colorlet{colorschema}{blue1}
-		\def\docname{Procedimento}
-		\def\numero{P\id.\ano}
+		\renewcommand{\docname}{Procedimento}
+		\renewcommand{\numero}{P\id.\ano}
 		\numberedsections{colorschema}
 	}{
 		\ifdefstring{\tipodocumento}{instrucaotrabalho}{
 			\colorlet{colorschema}{blue2}
-			\def\docname{Instrução de Trabalho}
-			\def\numero{T\id.\ano}
+			\renewcommand{\docname}{Instrução de Trabalho}
+			\renewcommand{\numero}{T\id.\ano}
 			\numberedsections{colorschema}
 		}{
 			\ifdefstring{\tipodocumento}{checklist}{
 				\colorlet{colorschema}{orange1}
-				\def\docname{Lista de Verificação}
-				\def\numero{T\id.\ano}
-				\numberedsections{colorschema}
+				\renewcommand{\docname}{Lista de Verificação}
+				\renewcommand{\numero}{C\id.\ano}
+				\nonumbersections{colorschema}
 			}{
 				\colorlet{colorschema}{green1}
-				\def\docname{Documento}
-				\def\numero{D\id.\ano}
+				\renewcommand{\docname}{Documento}
+				\renewcommand{\numero}{D\id.\ano}
 				\numberedsections{colorschema}
 			}
 		}
@@ -191,24 +192,25 @@
 	
 	%% CONDITIONAL LOADING OF TYPES OF DOCS
 	
+	%! suppress = NonMatchingIf
 	\ifdefstring{\tipodocumento}{recomendacao}{
 		% recomendação
-		\input{template/recomendacao/base.tex}
+		\input{template/recomendacao/base}
 	}{
 		\ifdefstring{\tipodocumento}{procedimento}{
 			% procedimento
-			\input{template/procedimento/base.tex}
+			\input{template/procedimento/base}
 		}{
 			\ifdefstring{\tipodocumento}{instrucaotrabalho}{
 				% instrução de trabalho
-				\input{template/instrucaotrabalho/base.tex}
+				\input{template/instrucaotrabalho/base}
 			}{
 				\ifdefstring{\tipodocumento}{checklist}{
 					% instrução de trabalho
-					\input{template/checklist/base.tex}
+					\input{template/checklist/base}
 				}{
 					% default (Documento)
-					\input{template/documento/base.tex}
+					\input{template/documento/base}
 				}
 			}
 		}

@@ -1,4 +1,11 @@
 @echo off
+REM %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+REM  USP-DOC
+REM  Template para documentos técnicos das USP
+REM
+REM  Copyright (c) 2023 Estevão Soares dos Santos
+REM %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 setlocal enabledelayedexpansion
 set DIRECTORY=%1
 set OUTPUT=

@@ -1,8 +1,13 @@
+-----------------------------------------------------------------------------------------------
+--  USP-DOC
+--  Template para documentos técnicos das USP
+--
+--  Copyright (c) 2023 Estevão Soares dos Santos
+-----------------------------------------------------------------------------------------------
+
 local function process_checklist_create_output_table(file_name)
     local line_number = 0
     local table_is_open = false
-    local inside_section = false
-    local inside_item = false
     local table_counter = 1
     local otp = {}
 
