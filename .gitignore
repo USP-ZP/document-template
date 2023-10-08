@@ -18,3 +18,4 @@ build/
 *.bcf
 *.run.xml
 document-template.sublime-workspace
+luacov.stats.out

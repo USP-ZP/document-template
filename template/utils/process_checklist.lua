@@ -12,6 +12,7 @@ local function process_checklist_create_output_table(file_name)
     local otp = {}
 
     local f = io.open(file_name, 'r')
+    if (f == nil) then error("File " .. file_name .. " not found!") end
     for ln in f:lines() do
         line_number = line_number + 1
 
@@ -120,7 +121,7 @@ local function process_checklist_make_table_close()
 end
 
 local function process_checklist_print_stuff(tab)
-    for i,line in ipairs(tab) do
+    for _,line in ipairs(tab) do
         if (line.tipo == 'section') then
     	    process_checklist_make_section(line.text, line.level)
     	elseif (line.tipo == 'table_header') then

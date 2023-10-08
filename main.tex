@@ -53,10 +53,6 @@
 \newcommand{\numero}{D\id.\ano}
 \newcommand{\versao}{\major.\minor.\patch}
 
-%%% Utils
-\input{template/utils/checkdir}
-\input{template/utils/includeallfromdir}
-
 
 %Esquema de Cores
 \definecolor{gray1}{RGB}{240, 240, 240}
@@ -73,35 +69,35 @@
 \newcommand{\starttocentries}{\let\addcontentsline\oldaddcontentsline}
 
 \newcommand{\nonumbersections}[1]{
-	% Remove numbers from sections and subsections
-	% format sections and subsections titles to be red
-	\titleformat{\section}
-	{\normalfont\sffamily\Large\bfseries\color{#1}}
-	{}{0em}{}
-	
-	\titleformat{\subsection}
-	{\normalfont\sffamily\normalsize\bfseries\color{#1}}
-	{}{0em}{}
-	
-	\titleformat{\subsubsection}
-	{\normalfont\sffamily\normalsize\bfseries\color{#1}}
-	{}{0em}{}
+    % Remove numbers from sections and subsections
+    % format sections and subsections titles to be red
+    \titleformat{\section}
+    {\normalfont\sffamily\Large\bfseries\color{#1}}
+    {}{0em}{}
+    
+    \titleformat{\subsection}
+    {\normalfont\sffamily\normalsize\bfseries\color{#1}}
+    {}{0em}{}
+    
+    \titleformat{\subsubsection}
+    {\normalfont\sffamily\normalsize\bfseries\color{#1}}
+    {}{0em}{}
 }
 
 \newcommand{\numberedsections}[1]{
-	% Remove numbers from sections and subsections
-	% format sections and subsections titles to be red
-	\titleformat{\section}
-	{\normalfont\sffamily\Large\bfseries\color{#1}}
-	{\thesection.}{1em}{}
-	
-	\titleformat{\subsection}
-	{\normalfont\sffamily\normalsize\bfseries\color{#1}}
-	{\thesubsection.}{1em}{}
-	
-	\titleformat{\subsubsection}
-	{\normalfont\sffamily\normalsize\bfseries\color{#1}}
-	{\thesubsubsection.}{1em}{}
+    % Remove numbers from sections and subsections
+    % format sections and subsections titles to be red
+    \titleformat{\section}
+    {\normalfont\sffamily\Large\bfseries\color{#1}}
+    {\thesection.}{1em}{}
+    
+    \titleformat{\subsection}
+    {\normalfont\sffamily\normalsize\bfseries\color{#1}}
+    {\thesubsection.}{1em}{}
+    
+    \titleformat{\subsubsection}
+    {\normalfont\sffamily\normalsize\bfseries\color{#1}}
+    {\thesubsubsection.}{1em}{}
 }
 
 
@@ -110,36 +106,36 @@
 
 %! suppress = NonMatchingIf
 \ifdefstring{\tipodocumento}{recomendacao}{
-	\colorlet{colorschema}{red1}
-	\renewcommand{\docname}{Recomendação}
-	\renewcommand{\numero}{R\id.\ano}
-	\nonumbersections{colorschema}
+    \colorlet{colorschema}{red1}
+    \renewcommand{\docname}{Recomendação}
+    \renewcommand{\numero}{R\id.\ano}
+    \nonumbersections{colorschema}
 }{
-	\ifdefstring{\tipodocumento}{procedimento}{
-		\colorlet{colorschema}{blue1}
-		\renewcommand{\docname}{Procedimento}
-		\renewcommand{\numero}{P\id.\ano}
-		\numberedsections{colorschema}
-	}{
-		\ifdefstring{\tipodocumento}{instrucaotrabalho}{
-			\colorlet{colorschema}{blue2}
-			\renewcommand{\docname}{Instrução de Trabalho}
-			\renewcommand{\numero}{T\id.\ano}
-			\numberedsections{colorschema}
-		}{
-			\ifdefstring{\tipodocumento}{checklist}{
-				\colorlet{colorschema}{orange1}
-				\renewcommand{\docname}{Lista de Verificação}
-				\renewcommand{\numero}{C\id.\ano}
-				\nonumbersections{colorschema}
-			}{
-				\colorlet{colorschema}{green1}
-				\renewcommand{\docname}{Documento}
-				\renewcommand{\numero}{D\id.\ano}
-				\numberedsections{colorschema}
-			}
-		}
-	}
+    \ifdefstring{\tipodocumento}{procedimento}{
+        \colorlet{colorschema}{blue1}
+        \renewcommand{\docname}{Procedimento}
+        \renewcommand{\numero}{P\id.\ano}
+        \numberedsections{colorschema}
+    }{
+        \ifdefstring{\tipodocumento}{instrucaotrabalho}{
+            \colorlet{colorschema}{blue2}
+            \renewcommand{\docname}{Instrução de Trabalho}
+            \renewcommand{\numero}{T\id.\ano}
+            \numberedsections{colorschema}
+        }{
+            \ifdefstring{\tipodocumento}{checklist}{
+                \colorlet{colorschema}{orange1}
+                \renewcommand{\docname}{Lista de Verificação}
+                \renewcommand{\numero}{C\id.\ano}
+                \nonumbersections{colorschema}
+            }{
+                \colorlet{colorschema}{green1}
+                \renewcommand{\docname}{Documento}
+                \renewcommand{\numero}{D\id.\ano}
+                \numberedsections{colorschema}
+            }
+        }
+    }
 }
 
 
@@ -152,9 +148,9 @@
 \fancyhf{} % Clear existing header and footer
 \renewcommand{\headrulewidth}{0pt} % No line in header area
 \fancyhead[L]{{
-		\fontfamily{phv}
-		\selectfont
-		{\cabecalho[\docname]{colorschema}}
+        \fontfamily{phv}
+        \selectfont
+        {\cabecalho[\docname]{colorschema}}
 }} % Use \cabecalho in the left header % Use \cabecalho in the left header
 \fancyfoot[C]{\thepage} % center-align the page number in the footer
 \setlength{\headheight}{35pt}
@@ -162,67 +158,69 @@
 
 %% METADATA ON PDFs
 \hypersetup{pdfinfo={
-	Title={\titulo},
-	Author={\equipaRedatora, \equipaRevisora, \equipaConsultora},
-	Subject={\tipodocumento},
-	Keywords={\pchave}
+    Title={\titulo},
+    Author={\equipaRedatora, \equipaRevisora, \equipaConsultora},
+    Subject={\tipodocumento},
+    Keywords={\pchave}
 }}
 
 \begin{document}
-	
-	\input{template/capa}
+    
+    \input{template/capa}
 
-	% Turn off PDF bookmarking, reset page counter
-	\hypersetup{pageanchor=false}
-	\setcounter{page}{1}
-	
-	\input{template/contracapa}
-	
-	
-	% Turn PDF bookmarking back on and continue with your document
-	\hypersetup{pageanchor=true}
-	\setcounter{page}{3}
-	
-	%reset geometry
-	\newgeometry{top=4cm, bottom=2cm, left=2cm, right=2cm}
-	
-	%% LOAD BIBLIOGRAPHY EVEN IF THERE's NO CITATIONS
-	\nocite{*}
+    % Turn off PDF bookmarking, reset page counter
+    \hypersetup{pageanchor=false}
+    \setcounter{page}{1}
+    
+    \input{template/contracapa}
+    
+    
+    % Turn PDF bookmarking back on and continue with your document
+    \hypersetup{pageanchor=true}
+    \setcounter{page}{3}
+    
+    %reset geometry
+    \newgeometry{top=4cm, bottom=2cm, left=2cm, right=2cm}
+    
+    %% LOAD BIBLIOGRAPHY EVEN IF THERE's NO CITATIONS
+    \nocite{*}
 
-	
-	%% CONDITIONAL LOADING OF TYPES OF DOCS
-	
-	%! suppress = NonMatchingIf
-	\ifdefstring{\tipodocumento}{recomendacao}{
-		% recomendação
-		\input{template/recomendacao/base}
-	}{
-		\ifdefstring{\tipodocumento}{procedimento}{
-			% procedimento
-			\input{template/procedimento/base}
-		}{
-			\ifdefstring{\tipodocumento}{instrucaotrabalho}{
-				% instrução de trabalho
-				\input{template/instrucaotrabalho/base}
-			}{
-				\ifdefstring{\tipodocumento}{checklist}{
-					% instrução de trabalho
-					\input{template/checklist/base}
-				}{
-					% default (Documento)
-					\input{template/documento/base}
-				}
-			}
-		}
-	}
-	
-	\pagebreak
-	
-	\checkdir{conteudo/anexos}
-	\ifnum\dirresult=1
-	\section{Anexos}
-	\includeallfromdir{conteudo/anexos}
-	\fi
-	
-	
+    
+    %% CONDITIONAL LOADING OF TYPES OF DOCS
+    
+    %! suppress = NonMatchingIf
+    \ifdefstring{\tipodocumento}{recomendacao}{
+        % recomendação
+        \input{template/recomendacao/base}
+    }{
+        \ifdefstring{\tipodocumento}{procedimento}{
+            % procedimento
+            \input{template/procedimento/base}
+        }{
+            \ifdefstring{\tipodocumento}{instrucaotrabalho}{
+                % instrução de trabalho
+                \input{template/instrucaotrabalho/base}
+            }{
+                \ifdefstring{\tipodocumento}{checklist}{
+                    % instrução de trabalho
+                    \input{template/checklist/base}
+                }{
+                    % default (Documento)
+                    \input{template/documento/base}
+                }
+            }
+        }
+    }
+    
+    \pagebreak
+    \begin{luacode}
+        dofile('template/utils/directory.lua')
+
+        if (Directory.exists('conteudo/anexos') == true and not Directory.is_empty('conteudo/anexos')) then
+            tex.print('\\section{Anexos}')
+            Directory.tex.include_all_tex_files('./conteudo/anexos')
+        end
+
+    \end{luacode}
+
 \end{document}
