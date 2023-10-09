@@ -10,7 +10,7 @@ build/
 *.out
 *.gz
 *.markdown.lua
-*.pdf
+main.pdf
 *.synctex.gz
 *.toc
 *.err
