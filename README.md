@@ -712,4 +712,4 @@ O modelo está dividido em várias pastas e ficheiros. Os mais importantes são 
 [MiKTeX]: https://miktex.org/
 [intjIdea]: https://www.jetbrains.com/idea/download/
 [ghd]: https://desktop.github.com/
-[pdf-exemplo]: https://github.com/USP-ZP/document-template/blob/869147c378359d6e3e1e0ae3eee94a8c794ea39a/_media/exemplo.pdf
+[pdf-exemplo]: https://github.com/USP-ZP/document-template/blob/main/_media/exemplo.pdf
