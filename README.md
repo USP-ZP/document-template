@@ -69,7 +69,7 @@ Na pasta que selecionou encontra-se agora uma cópia do repositório criado, bas
    ["Configurar o IntelliJ para Compilar Documentos LaTeX usando o Plugin TeXiFy IDEA"](#configurar-o-intellij-para-compilar-documentos-latex-usando-o-plugin-texify-idea)
 
 4. Edite o ficheiro `config.yml`. Este ficheiro contém as configurações base do projecto, como tipo de projecto, título,
-   autores, etc... Para mais informações, consulte a secção deste guia intitulada ["config.yml"](#configyml)
+   autores, etc... Para mais informações, consulte a secção deste guia intitulada ["config.yml"](#conteudoconfigyml)
 
 5. Clique em `Shift + F10`. O processo de compilação deverá iniciar. Quando terminado, deverá ter sido criado um documento
    PDF na pasta raiz do projecto.
@@ -106,6 +106,25 @@ Cada uma das subpastas terá os ficheiros apropriados para cada tipo de document
     - **NÂO DEIXE A PASTA ANEXOS VAZIA, OU VAI DAR ERRO!** Se não quiser anexos no documento, então deverá
       **apagar a pasta**.
     - Para mais informações consulte a secção deste guia intitulada ["conteudo/anexos"](#conteudoanexos)
+
+### Atualizar projecto pre-existente
+
+Atualizar um documento pré-existente para a última versão deste _template_ é muito simples:
+
+1. descarregue a nova versão (pode ser em formato zip)
+2. copie todos os ficheiros e pastas do zip **à excepção da pasta `conteudo`**
+3. cole esses ficheiros no seu projecto
+
+Contudo, deverá tomar algumas precauções para garantir que o novo template funciona no seu documento antigo sem erros:
+
+ - Certas versões têm "breaking changes", isto é, alterações no código fonte que necessitam de passos extra para
+   funcionar com versões antigas.
+ - Assim, leia as _release notes_ da versão e verifique se existem "breaking changes". Se existirem, siga os passos descritos
+   para adaptar o seu docuemtno antigo á nova versão do template.
+ - Como "regra de algibeira", as versões dentro da mesma "major version" (isto é, quando no número de versão, o primeiro
+  algarismo se mantém 1.x.x) são compatíveis.
+ - Versões em que a "major version" muda deverão ser imcompatíveis, e necessitam das adaptações descritas nas _release notes_.
+
 
 ---
 
@@ -675,9 +694,9 @@ O modelo está dividido em várias pastas e ficheiros. Os mais importantes são 
 
 ### main.tex
 
-### config.yml
-
 ### conteudo/*
+
+### conteudo/config.yml
 
 ### conteudo/referencias.bib
 
