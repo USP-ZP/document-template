@@ -11,6 +11,9 @@ Suporta estes tipos de documentos:
 
 É possível também adicionar outros tipos de dcumentos e personalizar conforme as necessidades
 
+![image](https://github.com/USP-ZP/document-template/assets/1608730/ffaccdb4-40c9-4a28-82ad-ae44acaaa32b)
+
+
 ## Copyright e Licença de Utilização
 
 Este modelo foi criado por [Estêvão Soares dos Santos](https://github.com/tivie) e está sob a licensa MIT.
