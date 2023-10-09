@@ -11,6 +11,8 @@ Suporta estes tipos de documentos:
 
 É possível também adicionar outros tipos de dcumentos e personalizar conforme as necessidades
 
+Pode ver um exemplo de um documento gerado por este sistema [aqui][pdf-exemplo]
+
 ![image](https://github.com/USP-ZP/document-template/assets/1608730/ffaccdb4-40c9-4a28-82ad-ae44acaaa32b)
 
 
@@ -710,3 +712,4 @@ O modelo está dividido em várias pastas e ficheiros. Os mais importantes são 
 [MiKTeX]: https://miktex.org/
 [intjIdea]: https://www.jetbrains.com/idea/download/
 [ghd]: https://desktop.github.com/
+[pdf-exemplo]: https://github.com/USP-ZP/document-template/blob/869147c378359d6e3e1e0ae3eee94a8c794ea39a/_media/exemplo.pdf
