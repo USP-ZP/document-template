@@ -1,0 +1,80 @@
+###############################################################################################
+#  USP-DOC
+#  Template para documentos técnicos das USP
+#
+#  Copyright (c) 2023 Estevão Soares dos Santos
+###############################################################################################
+#
+# Ficheiro de configuração do Documento
+#
+
+# Tipo de documento
+# escolher o tipo de documento apropriado de entre os valores possíveis:
+#     - Documento genérico:    1
+#     - Recomendação:          2
+#     - Procedimento:          3
+#     - Instrução de Trabalho: 4
+#     - Lista de Verificação:  5
+#
+# Nota programador: Para adicionar novos tipos de documentos ver o ficheiro "template/utils/parse_config.lua"
+tipoDeDocumento: 1
+
+# Título do documento
+titulo: "Template para documento da USP com um título que pode ser bastante longo"
+
+# Número do procedimento
+# O número do procedimento deve ter o seguinte formato <letra>ID.ANOvMAJOR.MINOR.PATCH
+#     - letra: Letra correspondente ao tipo de documento.
+#              (D: documentos; R: recomendação; P: procedimento; I: Instrução de trabalho; C: Lista de verificação)
+#     - ID:    Número composto por 3 dígitos (ex: 001). O ID é incremental e faz reset em cada ano
+#     - ANO:   Ano civil em que o procedimento foi criado pela primeira vez
+#     - MAJOR: Versão major do documento. Corresponde a uma grande revisão do documento.
+#              Geralmente implica nova revisão cientifica extensa
+#     - MINOR: Versão minor do documento. Corresponde a uma pequena revisão do documento,
+#              com alterações "cirurgicas" da recomendação
+#     - PATCH: Versão patch do documento. Corresponde a pequenas alterações como correcção de
+#              gralhas ou erros ortográficos
+id: "001"
+ano: "2023"
+
+# Versão
+major: 1
+minor: 0
+patch: 0
+
+# se alguma destas datas estiver vazia (ou seja, sem valor dentro das aspas),
+# será tomada a última data em que o documento foi compilado
+dataElaboracao: ""
+dataRevisao: ""
+dataAprovacao: "2023-12-31"
+
+# Palavras-chave
+#   Array de valores. Suporta comandos em LaTeX como \\emph, \\textbf, etc... (a barra \ tem de estar em duplicado)
+pchave: [
+  "Rastreio",
+  "Enterobacterales produtores de carbapenemases",
+  "\\emph{Staphylococcus aureus} resistente a meticilina",
+  "admissão hospitalar",
+  "internamento"]
+
+# Destinatarios
+destinatarios: "Profissionais de Saúde do ACES Oeste Norte"
+
+# Local
+local: "USP do ACES Oeste Norte"
+
+contacto: > 
+  Unidade de Saúde Pública Zé-Povinho \\
+  Rua Etelvino Santos, s/n.º;
+  2500-297 Caldas da Rainha \\
+  Telefone n.º 262 248 840 \\
+  usp.oestenorte@arslvt.min-saude.pt \\
+
+proposta: >
+  O presente documento foi elaborado por proposta da conjunta da Unidade de Saúde Pública do ACES Oeste Norte,
+  o Centro Hospitalar do Oeste e do Departamento de Saúde Pública
+  da Administração Regional de Saúde de Lisboa e Vale do Tejo.
+
+equipaRedatora: ["João Silva", "Maria Fernandes", "Bruno Almeida", "Ana Luísa Pereira"]
+equipaRevisora: ["Tiago Carvalho", "Sofia Martins", "André Lopes Rocha"]
+equipaConsultora: ["Rita Oliveira Santos", "Pedro Gonçalves"]

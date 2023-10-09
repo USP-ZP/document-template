@@ -9,11 +9,6 @@
 % Para alterar o conteúdo, editar os ficheiros da pasta "conteudos"
 % AS informações acerca da recomendação estão no ficheiro "metadados.tex"
 
-
-
-
-\input{metadados}
-
 \documentclass[12pt]{article}
 
 %! suppress = MultipleIncludes
@@ -49,9 +44,16 @@
 \usepackage{template/cabecalho}
 %\usepackage{showframe}
 
+\begin{luacode}
+    dofile("./template/utils/parse_config.lua")
+\end{luacode}
 
-\newcommand{\numero}{D\id.\ano}
-\newcommand{\versao}{\major.\minor.\patch}
+\directlua{parse_config("./config.yml")}
+
+%\input{metadados}
+
+%\newcommand{\numero}{D\id.\ano}
+%\newcommand{\versao}{\major.\minor.\patch}
 
 
 %Esquema de Cores

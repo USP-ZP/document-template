@@ -68,8 +68,8 @@ Na pasta que selecionou encontra-se agora uma cópia do repositório criado, bas
 3. Siga as instruções para configurar o compilador presentes na secção deste guia intitulada
    ["Configurar o IntelliJ para Compilar Documentos LaTeX usando o Plugin TeXiFy IDEA"](#configurar-o-intellij-para-compilar-documentos-latex-usando-o-plugin-texify-idea)
 
-4. Edite o ficheiro `metadados.tex`. Este ficheiro contém as configurações base do projecto, como tipo de projecto, título,
-   autores, etc... Para mais informações, consulte a secção deste guia intitulada ["metadados.tex"](#metadadostex)
+4. Edite o ficheiro `config.yml`. Este ficheiro contém as configurações base do projecto, como tipo de projecto, título,
+   autores, etc... Para mais informações, consulte a secção deste guia intitulada ["config.yml"](#configyml)
 
 5. Clique em `Shift + F10`. O processo de compilação deverá iniciar. Quando terminado, deverá ter sido criado um documento
    PDF na pasta raiz do projecto.
@@ -80,12 +80,14 @@ Para editar o projecto e escrever os conteúdos deverá editar os ficheiros dent
 Cada uma das subpastas terá os ficheiros apropriados para cada tipo de documento. Por exemplo, se pretende criar uma
 "Recomendação":
 
-1. Editar o ficheiro `metadados.tex` e seleccionar o tipo de documento apropriado. Por exemplo, se pretender 
-   escrever uma Recomendação:
-    - Deve remove o caracter `%` antes da linha `\newcommand{\tipodocumento}{recomendacao}       % recomendação`
-    - Acrescentar o caracter `%` antes de todos os outros tipos de comentários, por forma a transformá-los num comentário.
-   
-2. Editar o resto do ficheiro `metadados.tex`, substituindo as informações pré-existentes pelas adequadas.
+1. Editar o ficheiro `config.yml` e seleccionar o tipo de documento apropriado. Por exemplo, se pretender 
+   escrever uma Recomendação, deve colocar o valor 2, sem aspas: 
+
+    ```yml
+    tipoDeDocumento: 2
+    ```
+
+2. Editar o resto do ficheiro `config.yml`, substituindo as informações pré-existentes pelas adequadas.
 
 3. Tratando-se de uma recomendação, os ficheiros que devem ser editados para adicionar o conteúdo ao documento encontram-se
    dentro da pasta `conteudo/recomendacao`
@@ -673,7 +675,7 @@ O modelo está dividido em várias pastas e ficheiros. Os mais importantes são 
 
 ### main.tex
 
-### metadados.tex
+### config.yml
 
 ### conteudo/*
 
