@@ -18,6 +18,7 @@
 \hline
 \end{tabularx}
 \end{flushleft}
+\clearpage
 \subsection{Another subtitle}
 \begin{flushleft}
 \rowcolors{2}{gray!25}{white}

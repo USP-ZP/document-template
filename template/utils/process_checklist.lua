@@ -45,14 +45,12 @@ local function process_checklist_create_output_table(file_name)
             end
 
             -- print a section
-            local foo = {tipo="section", level=level, text=line}
-            table.insert(otp, foo)
+            table.insert(otp, {tipo="section", level=level, text=line})
 
 	        -- we turn inside_section = true
             -- we continue...
 	        goto continue
         end
-
 
         -- if it matches `^\d+ ` (number dot space), it's a checlist item
         if (string.match(line, '^%d+%. ') ~= nil) then
@@ -68,16 +66,33 @@ local function process_checklist_create_output_table(file_name)
 	        line = string.gsub(line, '^%d+%. +', '')
 
             -- insert into otp list
-            local foo = {tipo="checklist_item", num=table_counter, text=line}
-	        table.insert(otp, foo)
+	        table.insert(otp, {tipo="checklist_item", num=table_counter, text=line})
 	        table_counter = table_counter + 1
 
 	        goto continue
         end
 
+        -- before, we changed \ to / because of macros. So...
+        if (string.match(line, '^ */pagebreak')) then
+            -- force a pagebreak
+            -- pagebreaks closes tables
+            if (table_is_open == true) then
+                -- A table was opened, so we need to close it
+                table.insert(otp, {tipo="table_close", text=""})
+                table_is_open = false
+            end
+            table.insert(otp, {tipo="pagebreak", text=""})
+        end
+
         -- if we reached here, then is part of multiline (either section of checklist item)
-        if (otp[#otp].tipo ~= 'table_header' and otp[#otp].tipo ~= 'table_close') then
-	        otp[#otp].text = otp[#otp].text .. ' ' .. line
+        -- or the first line is garbage
+        if next(otp) == nil then
+            -- the first line is garbage
+            -- so write a note for the reader (as section heading) and proceed
+            table.insert(otp, {tipo="section", level=level, text="Esta linha está errada" .. line})
+
+        elseif (otp[#otp].tipo ~= 'table_header' and otp[#otp].tipo ~= 'table_close') then
+            otp[#otp].text = otp[#otp].text .. ' ' .. line
         end
 
         ::continue::
@@ -94,12 +109,12 @@ local function process_checklist_create_output_table(file_name)
 end
 
 local function process_checklist_make_section(text, level)
+
     if (level == 1) then
         tex.print('\\subsection{' .. text .. '}')
 	else
 	    tex.print('\\subsubsection{' .. text .. '}')
     end
-
 end
 
 local function process_checklist_make_table_header()
@@ -120,6 +135,10 @@ local function process_checklist_make_table_close()
     tex.print("\\end{tabularx}\n\\end{flushleft}")
 end
 
+local function process_checklist_make_pagebreak()
+    tex.print("\\clearpage")
+end
+
 local function process_checklist_print_stuff(tab)
     for _,line in ipairs(tab) do
         if (line.tipo == 'section') then
@@ -130,6 +149,8 @@ local function process_checklist_print_stuff(tab)
             process_checklist_make_checklist_item(line.num, line.text)
     	elseif (line.tipo == 'table_close') then
             process_checklist_make_table_close()
+        elseif (line.tipo == 'pagebreak') then
+            process_checklist_make_pagebreak()
         end
     end
 end

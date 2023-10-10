@@ -1,0 +1,14 @@
+\begin{flushleft}
+\rowcolors{2}{gray!25}{white}
+\begin{tabularx}{\textwidth}{|c|X|c|c|c|}
+\hline
+  & \textbf{Item} & \textbf{S} & \textbf{N} & \textbf{N/A} \\
+\hline
+1 & foo &  &  & \\
+\hline
+2 & bar &  &  & \\
+\hline
+3 & baz &  &  & \\
+\hline
+\end{tabularx}
+\end{flushleft}
