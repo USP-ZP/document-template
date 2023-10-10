@@ -72,6 +72,14 @@ describe("Checklist TestCase:", function()
             assert.are.equal(expected, actual)
         end)
 
+        it("should parse º characters correctly", function()
+            local expected = read_file(base_path .. "simbolo_grau.otp")
+            process_checklist(base_path .. "simbolo_grau.src")
+            expected = string.gsub(expected, '^%s*(.-)%s*$', '%1')
+            actual = string.gsub(actual, '^%s*(.-)%s*$', '%1')
+            assert.are.equal(expected, actual)
+        end)
+
         after_each(function()
             actual = ""
         end)

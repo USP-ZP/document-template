@@ -21,6 +21,9 @@ local function process_checklist_create_output_table(file_name)
         -- change backslash to forwardslash because of latex macros
         line = string.gsub(line, '\\', '/')
 
+        -- change º with \textdegree
+        line = string.gsub(line, '\u{00BA}', '\\textdegree')
+
         -- if line is empty, we just ignore it
         if (line == nil or line == '') then
             goto continue
