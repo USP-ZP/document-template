@@ -1,0 +1,20 @@
+% store \LayoutTextField in \OldLayoutTextField
+\let\OldLayoutTextField\LayoutTextField
+
+% redefine \LayoutTextField to ignore label
+\def\LayoutTextField#1#2{% label, field
+    #2%
+}
+
+\begin{Form}
+    \begin{tabularx}{\textwidth}{lX}
+        Nome: & \TextField[width=\hsize]{Nome} \\\\
+        Morada: & \TextField[width=\hsize]{Morada} \\\\
+        Telefone: & \TextField[width=\hsize]{Telefone} \\\\
+        Telemóvel: & \TextField[width=\hsize]{Telemóvel} \\\\
+        e-mail: & \TextField[width=\hsize]{E-mail} \\\\
+    \end{tabularx}
+\end{Form}
+
+% restore \LayoutTextField from \OldLayoutTextField so it behaves normally again
+\let\LayoutTextField\OldLayoutTextField
