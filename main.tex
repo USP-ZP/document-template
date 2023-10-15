@@ -28,6 +28,7 @@
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
 \usepackage[table]{xcolor}
+\usepackage{ltablex}
 \usepackage{tikz}
 \usetikzlibrary{calc}
 \usepackage[export]{adjustbox}
@@ -187,7 +188,7 @@
     %% LOAD BIBLIOGRAPHY EVEN IF THERE's NO CITATIONS
     \nocite{*}
 
-    
+    \keepXColumns
     %% CONDITIONAL LOADING OF TYPES OF DOCS
     
     %! suppress = NonMatchingIf

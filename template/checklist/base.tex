@@ -8,6 +8,13 @@
 \tableofcontents
 \newpage
 
+\IfFileExists{conteudo/checklist/enquadramento.md}{
+    \section{Enquadramento}\label{sec:checklist-enquadramento}
+    \markdownInput{conteudo/checklist/enquadramento.md}
+
+    \newpage
+}{}
+
 \section{Identificação}\label{sec:identificacao}
 
 \subsection{Local a avaliar/verificar}\label{subsec:local-a-avaliar/verificar}
@@ -21,16 +28,21 @@
 \newpage
 
 \section{Lista de Verificação}\label{sec:lista-de-verificacao}
-\begin{small}
-\begin{luacode}
-dofile("template/utils/process_checklist.lua")
-process_checklist("conteudo/checklist/checklist.md")
-\end{luacode}
-\end{small}
+
+\begin{footnotesize}
+    \begin{luacode}
+    dofile("template/utils/process_checklist.lua")
+    process_checklist("conteudo/checklist/checklist.md")
+    \end{luacode}
+\end{footnotesize}
 \newpage
 
 \section{Guião da Lista de Verificação}\label{sec:guiao-da-lista-de-verificacao}
 \markdownInput[startNumber=true]{conteudo/checklist/guiao.md}
 \newpage
+
+\IfFileExists{conteudo/checklist/extra.md}{
+    \markdownInput{conteudo/checklist/extra.md}
+}{}
 
 \printbibliography[title={Referências}]

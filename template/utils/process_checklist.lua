@@ -20,7 +20,9 @@ local function process_checklist_create_output_table(file_name)
         local line = string.gsub(ln, '^%s*(.-)%s*$', '%1')
         -- change backslash to forwardslash because of latex macros
         line = string.gsub(line, '\\', '/')
-
+        line = string.gsub(line, '_', '\\_')
+        line = string.gsub(line, '@', '\\@')
+        line = string.gsub(line, '%%', '\\%')
         -- change º with \textdegree
         line = string.gsub(line, '\u{00BA}', '\\textdegree')
 
@@ -50,29 +52,29 @@ local function process_checklist_create_output_table(file_name)
             -- print a section
             table.insert(otp, {tipo="section", level=level, text=line})
 
-	        -- we turn inside_section = true
+            -- we turn inside_section = true
             -- we continue...
-	        goto continue
+            goto continue
         end
 
         -- if it matches `^\d+ ` (number dot space), it's a checlist item
         if (string.match(line, '^%d+%. ') ~= nil) then
-	        -- we need to check if it's opening a table
-	        if (table_is_open == false) then
-	            -- first item of a new table
-	            local foo = {tipo="table_header", text=""}
-	            table.insert(otp, foo)
-	            table_is_open = true
-	        end
+            -- we need to check if it's opening a table
+            if (table_is_open == false) then
+                -- first item of a new table
+                local foo = {tipo="table_header", text=""}
+                table.insert(otp, foo)
+                table_is_open = true
+            end
 
-	        -- remove the numbers
-	        line = string.gsub(line, '^%d+%. +', '')
+            -- remove the numbers
+            line = string.gsub(line, '^%d+%. +', '')
 
             -- insert into otp list
-	        table.insert(otp, {tipo="checklist_item", num=table_counter, text=line})
-	        table_counter = table_counter + 1
+            table.insert(otp, {tipo="checklist_item", num=table_counter, text=line})
+            table_counter = table_counter + 1
 
-	        goto continue
+            goto continue
         end
 
         -- before, we changed \ to / because of macros. So...
@@ -105,7 +107,7 @@ local function process_checklist_create_output_table(file_name)
 
     -- we reached the end of the file, so if we have any opened tables, we must closed them
     if (table_is_open == true and otp[#otp].tipo ~= 'table_close') then
-	    table.insert(otp, {tipo="table_close", text=""})
+        table.insert(otp, {tipo="table_close", text=""})
     end
 
     return otp
@@ -115,8 +117,8 @@ local function process_checklist_make_section(text, level)
 
     if (level == 1) then
         tex.print('\\subsection{' .. text .. '}')
-	else
-	    tex.print('\\subsubsection{' .. text .. '}')
+    else
+        tex.print('\\subsubsection{' .. text .. '}')
     end
 end
 
@@ -135,7 +137,7 @@ local function process_checklist_make_checklist_item(num, text)
 end
 
 local function process_checklist_make_table_close()
-    tex.print("\\end{tabularx}\n\\end{flushleft}")
+    tex.print("\\end{tabularx}\\end{flushleft}")
 end
 
 local function process_checklist_make_pagebreak()
@@ -145,12 +147,12 @@ end
 local function process_checklist_print_stuff(tab)
     for _,line in ipairs(tab) do
         if (line.tipo == 'section') then
-    	    process_checklist_make_section(line.text, line.level)
-    	elseif (line.tipo == 'table_header') then
-    	    process_checklist_make_table_header()
-    	elseif (line.tipo == 'checklist_item') then
+            process_checklist_make_section(line.text, line.level)
+        elseif (line.tipo == 'table_header') then
+            process_checklist_make_table_header()
+        elseif (line.tipo == 'checklist_item') then
             process_checklist_make_checklist_item(line.num, line.text)
-    	elseif (line.tipo == 'table_close') then
+        elseif (line.tipo == 'table_close') then
             process_checklist_make_table_close()
         elseif (line.tipo == 'pagebreak') then
             process_checklist_make_pagebreak()

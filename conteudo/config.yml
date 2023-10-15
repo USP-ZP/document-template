@@ -17,7 +17,7 @@
 #     - Lista de Verificação:  5
 #
 # Nota programador: Para adicionar novos tipos de documentos ver o ficheiro "template/utils/parse_config.lua"
-tipoDeDocumento: 1
+tipoDeDocumento: 5
 
 # Título do documento
 titulo: "Template para documento da USP com um título que pode ser bastante longo"
